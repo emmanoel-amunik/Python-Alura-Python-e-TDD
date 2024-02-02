@@ -26,3 +26,15 @@ class TestClass:
         result = employer_test.last_name()
 
         assert result == expected
+
+    def test_when_salary_is_100k_decrease_10percent(self):
+
+        employer_name_input = "Paulo Bragança"
+        employer_salary_input = 100000
+        expected = 90000
+
+        employer_test = Employer(employer_name_input, 11/11/2000,
+                                 employer_salary_input)
+        result = employer_test.salary_decrease()
+
+        assert result == expected

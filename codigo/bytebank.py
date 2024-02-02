@@ -19,10 +19,6 @@ class Employer:
 
         return broken_name[-1]
 
-    @property
-    def wage(self):
-        return self._wage
-
     def age(self):
 
         birth_date_broken = self._birth_date.split('/')
@@ -31,6 +27,16 @@ class Employer:
 
         return current_year - int(birth_year)
 
+    def _director_check(self):
+        last_names = ["Bragança", "Windsor", "Bourbon", "Yamato",
+                      "Al Saud", "Khan", "Tudor", "Ptolomeu"]
+
+        return self._wage >= 100000 and self.last_name() in last_names
+
+    @property
+    def wage(self):
+        return self._wage
+
     def calculate_bonus(self):
 
         value = self._wage * 0.1
@@ -38,6 +44,14 @@ class Employer:
             value = 0
 
         return value
+
+    def salary_decrease(self):
+
+        if self._director_check():
+            decrease = self._wage * 0.1
+            self._wage = self._wage - decrease
+
+        return self._wage
 
     def __str__(self):
         return f'Employer({self._name}, {self._birth_date}, {self._wage})'
