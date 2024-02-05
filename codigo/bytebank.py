@@ -41,7 +41,7 @@ class Employer:
 
         value = self._wage * 0.1
         if value > 1000:
-            value = 0
+            raise Exception("The salary is higher for a bonus.")
 
         return value
 
