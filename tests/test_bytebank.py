@@ -66,3 +66,12 @@ class TestClass:
             result = employer_test.calculate_bonus()
 
             assert result
+
+    def test_return_str(self):
+        employer_name, birth_date, wage = "Test", "12/03/2000", 1000
+        expected = "Employer(Test, 12/03/2000, 1000)"
+
+        employer_test = Employer(employer_name, birth_date, wage)
+        result = employer_test.__str__()
+
+        assert expected == result
